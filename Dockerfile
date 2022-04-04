@@ -27,4 +27,3 @@ RUN  sed -e ' \
      s|cert.pem|'$ssl_certificate'|g;\
      s|cert.key|'$ssl_certificate_key'|g; \
      ' /etc/nginx/nginx.conf
-RUN  /bin/sh chmod u+x /script.sh && /bin/sh script.sh
