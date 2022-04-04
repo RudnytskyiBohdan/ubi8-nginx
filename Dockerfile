@@ -13,7 +13,7 @@ ENV NAME=nginx \
     ssl_certificate=""\
     ssl_certificate_key=""
 
-LABEL Nameu=bi8-nginx Version=0.0.1
+LABEL Name=ubi8-nginx Version=0.0.1
 
 COPY script.sh /
 
