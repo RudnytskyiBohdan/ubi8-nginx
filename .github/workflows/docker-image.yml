@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubi8-init
 
     steps:
     - uses: actions/checkout@v3
