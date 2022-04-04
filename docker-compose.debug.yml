@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ubi8nginx:
+    image: ubi8nginx
+    build:
+      context: .
+      dockerfile: ./Dockerfile
