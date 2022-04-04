@@ -27,3 +27,4 @@ RUN  sed -e ' \
      s|cert.pem|'$ssl_certificate'|g;\
      s|cert.key|'$ssl_certificate_key'|g; \
      ' /etc/nginx/nginx.conf
+# RUN sed '98,115 s/^#//g' /etc/nginx/nginx.conf
