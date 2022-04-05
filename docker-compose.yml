@@ -1,8 +1,12 @@
 version: '3.4'
 
 services:
-  ubi8nginx:
-    image: ubi8nginx
+  ubi8-nginx:
     build:
-      context: .
       dockerfile: ./Dockerfile
+    volumes:
+      - ./docker/logs/nginx:/var/log/nginx
+      - ./www/html:/var/www/html
+      - ./ssl:/etc/ssl/
+      - ./conf/nginx:/etc/nginx
+    restart: always
