@@ -8,4 +8,4 @@ services:
       - ./www/html:/var/www/html
       - ./ssl:/etc/ssl/
       - ./conf/nginx:/etc/nginx
-   restart: always
+   command: yum -y reinstall nginx && /bin/bash /script.sh 
