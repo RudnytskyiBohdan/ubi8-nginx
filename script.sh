@@ -15,8 +15,4 @@ else
     sed -n '/HTTPS server/,$ s/#//g; /HTTPS server/c # HTTPS server' /etc/nginx/nginx.conf
  fi       
 
-cat /etc/nginx/nginx.conf
-
-nginx -g "daemon off;"
-
 exit

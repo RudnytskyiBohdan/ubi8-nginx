@@ -18,5 +18,10 @@ COPY script.sh /
 
 RUN yum update && yum -y install nginx
 
-RUN chmod u+x script.sh && yum -y reinstall nginx &&\
-    bash /script.sh
+RUN /bin/bash /script.sh
+
+RUN cat /etc/nginx/nginx.conf
+
+STOPSIGNAL SIGQUIT
+
+CMD ["nginx", "-g", "daemon off;"]
