@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build and pull the Docker image
-      run: docker build --pull .
+      run: docker build --pull . -t ubi8-nginx:latest
   
   run:
     runs-on: ubuntu-latest
