@@ -10,14 +10,9 @@ ENV NAME=nginx \
 
 LABEL Name=ubi8-nginx Version=0.0.1
 
-COPY script.sh /
-
 RUN yum update && yum -y install nginx
 
-RUN /bin/bash /script.sh
-
-RUN cat /etc/nginx/nginx.conf
+COPY script.sh /
 
 STOPSIGNAL SIGQUIT
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "/bin/bash", "/script.sh" ]

@@ -9,10 +9,12 @@ sed -n -e '
      s|cert.key|/etc/ssl/cert.key|g;
 ' /etc/nginx/nginx.conf
 
-if ["$ssl_port" -ne 0] ; then
+if [ $ssl_port -eq 0 ] ; then
   exit
 else
     sed -n '/HTTPS server/,$ s/#//g; /HTTPS server/c # HTTPS server' /etc/nginx/nginx.conf
- fi       
+fi       
+
+nginx -g "daemon off;"
 
 exit
