@@ -6,14 +6,31 @@ on:
   pull_request:
     branches: [ main ]
 
-
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build and pull the Docker image
       run: docker build --pull . -t ubi8-nginx:latest
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: bojdan
+        password: SunDora_24
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v1
+      with:
+        images: bojdan/ubi8-nginx
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
 
     
