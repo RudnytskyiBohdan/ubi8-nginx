@@ -13,11 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build and pull the Docker image
-      run: docker build --pull . -t ubi8-nginx:latest
-  
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run the Docker Image
-        run: docker run ubi8-nginx:latest
+      run: 
+        docker build --pull . -t ubi8-nginx:latest && \
+        docker push bojdan/ubi8-nginx:latest &&\
+        docker run ubi8-nginx:latest
