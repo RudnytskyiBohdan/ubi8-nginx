@@ -16,8 +16,8 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
       with:
-        username: bojdan
-        password: SunDora_24
+        username: ubi8nginx
+        password: 92Gj_8UH-H9H2
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
