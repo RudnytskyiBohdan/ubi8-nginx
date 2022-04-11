@@ -26,6 +26,7 @@ jobs:
       with:
         images: bojdan/ubi8-nginx
 
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
