@@ -23,7 +23,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v1
       with:
-        images: bojdan/ubi8-nginx
+        images: ubi8nginx/ubi8-nginx
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
