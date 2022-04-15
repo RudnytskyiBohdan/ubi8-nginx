@@ -1,6 +1,7 @@
 FROM   registry.access.redhat.com/ubi8/ubi-init
 
 EXPOSE 80
+
 EXPOSE 443
 
 ENV NAME=nginx \
