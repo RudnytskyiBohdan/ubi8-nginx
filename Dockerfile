@@ -1,23 +1,26 @@
-FROM   registry.access.redhat.com/ubi8/ubi-init
+FROM debian:buster
+
+MAINTAINER Maxence POUTORD <maxence.poutord@gmail.com>
+
+RUN apt update && apt upgrade -y
+RUN apt install curl -y
+
+RUN wget http://nginx.org/download/nginx-1.13.10.tar.gz &&\
+    tar -xf nginx-1.13.10.tar.gz && dpkg -i nginx-1.13.10
+
+ADD nginx.conf /etc/nginx/
+ADD symfony.conf /etc/nginx/sites-available/
+
+RUN mkkdir /etc/nginx/sites-available
+RUN ln -s /etc/nginx/sites-available/symfony.conf /etc/nginx/sites-enabled/symfony
+
+ARG PHP_CONTAINER_NAME=$PHP_CONTAINER_NAME
+ARG LANDING_CONTAINER_NAME=$LANDING_CONTAINER_NAME
+RUN echo "upstream php-upstream { server  $PHP_CONTAINER_NAME:9000; }" > /etc/nginx/conf.d/upstream.conf
+
+RUN usermod -u 1000 www-data
+
+CMD ["nginx"]
 
 EXPOSE 80
-
 EXPOSE 443
-
-ENV NAME=nginx \
-    port=80\
-    ssl_port=0\
-    server_name="example.test"
-
-LABEL Name=ubi8-nginx Version=0.0.1
-
-VOLUME [ "/etc/ssl/" ]
-VOLUME [ "/etc/nginx/" ]
-VOLUME [ "/var/www/html/" ]
-
-RUN yum update && yum -y install nginx
-
-COPY script.sh /
-
-STOPSIGNAL SIGQUIT
-CMD [ "/bin/bash", "/script.sh" ]
