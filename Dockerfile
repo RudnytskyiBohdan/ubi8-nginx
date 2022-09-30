@@ -3,7 +3,7 @@ FROM debian:buster
 MAINTAINER Maxence POUTORD <maxence.poutord@gmail.com>
 
 RUN apt update && apt upgrade -y
-RUN apt install curl -y
+RUN apt install curl wget -y
 
 RUN wget http://nginx.org/download/nginx-1.13.10.tar.gz &&\
     tar -xf nginx-1.13.10.tar.gz && dpkg -i nginx-1.13.10
