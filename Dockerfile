@@ -6,7 +6,7 @@ RUN apt update && apt upgrade -y
 RUN apt install curl wget -y
 
 RUN wget http://nginx.org/download/nginx-1.13.10.tar.gz &&\
-    tar -xf nginx-1.13.10.tar.gz -C /opt && dpkg -i /opt/nginx-1.13.10
+    tar -xf nginx-1.13.10.tar.gz -C /opt && ls -lhaG /opt   #dpkg -i /opt/nginx-1.13.10
 
 ADD nginx.conf /etc/nginx/
 ADD symfony.conf /etc/nginx/sites-available/
